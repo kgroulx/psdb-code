@@ -15,6 +15,7 @@ from coffin.shortcuts import render_to_response
 ENV = Environment(loader=PackageLoader('organizations', 'templates'))
 
 def org_main(request):
+    data = {}
     org_type_info = list()
     title_link = reverse('create_lab')
     title_link_text = '(add)'
@@ -31,12 +32,12 @@ def org_main(request):
         }
         org_type_info.append(info)
         data = {
-            'request': request,
-            'org_type_info': org_type_info,
-            'title': 'Organizations',
-            'title_link': title_link,
-            'title_link_text': title_link_text
-            }
+                'request': request,
+                'org_type_info': org_type_info,
+                'title': 'Organizations',
+                'title_link': title_link,
+                'title_link_text': title_link_text,
+                }
     return render_to_response('org_main.html', data)
 
 @login_required
